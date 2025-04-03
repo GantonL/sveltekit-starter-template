@@ -25,11 +25,15 @@ interface DataItem {
 
 app.get('/api/allocate-cell', (_req: Request, res: Response<DataItem[]>) => {
   const warehouse = new Warehouse();
-  console.log(warehouse.allocateCell('bread', 2));
-  console.log(warehouse.allocateCell('bamba', 6));
-  console.log(warehouse.allocateCell('yogurt', 6));
-  console.log(warehouse.allocateCell('apple', 11));
-  res.json();
+  const test1 = warehouse.allocateCell('bread', 2)
+  console.log(test1);
+  const test2 =warehouse.allocateCell('bamba', 6) 
+  console.log(test2);
+  const test3 = warehouse.allocateCell('yogurt', 6); 
+  console.log(test3);
+  const test4=warehouse.allocateCell('apple', 11) 
+  console.log(test4);
+  res.json({test1, test2, test3, test4});
 });
 
 // Start server
