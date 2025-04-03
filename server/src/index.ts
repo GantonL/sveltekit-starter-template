@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import { Warehouse } from './StorageSystem/classes/warehouse';
 
 dotenv.config();
 
@@ -22,12 +23,13 @@ interface DataItem {
 }
 
 
-app.get('/api/data', (_req: Request, res: Response<DataItem[]>) => {
-  res.json([
-      { id: 1, name: 'Item 1' },
-      { id: 2, name: 'Item 2' },
-      { id: 3, name: 'Item 3' }
-    ]);
+app.get('/api/allocate-cell', (_req: Request, res: Response<DataItem[]>) => {
+  const warehouse = new Warehouse();
+  console.log(warehouse.allocateCell('bread', 2));
+  console.log(warehouse.allocateCell('bamba', 6));
+  console.log(warehouse.allocateCell('yogurt', 6));
+  console.log(warehouse.allocateCell('apple', 11));
+  res.json();
 });
 
 // Start server
